@@ -61,12 +61,9 @@ for Ech = 1:E
     data_E = data_E';
     
     for i=1:size(data_E,2)-1
-        %     tomo(:,:,i) = att_pos(data_E(:,:,i+1),data_E(:,:,1),0,0);
         tomo(:,i) = -log(data_E(:,i+1)./data_E(:,1));
     end
-    %     Slicer(tomo) %see data slice by slice
-    % tomo = permute(tomo,[1 3 2]); %reshaping to fit astra format
-    % tomo(:,:,575:end)=[]; % cutting sample holder (might need to be reset)
+    %     Slicer(tomo) % see data slice by slice
 
     %% Reconstruction is with fan beams geometry (translating line 1D-detector). 
     %  For multi energy please loop it to fit the data size (or optimize it differently)
