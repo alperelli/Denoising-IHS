@@ -78,28 +78,26 @@ for Ech = 1:E
         %rescaling to make astra work (if you find why this is necessary or a better way to do it, please let
         %me know)
         M = (origin_det+source_origin)/source_origin;
-        scale_x = M/det_spacing_x;
-        % scale_y = M/det_spacing_y;
+        scale_x       = M/det_spacing_x;
         source_origin = scale_x*source_origin;
-        origin_det = scale_x*origin_det;
+        origin_det    = scale_x*origin_det;
         det_spacing_x = det_spacing_x*scale_x;
-        % det_spacing_y = det_spacing_y*scale_y;
 
-        % vol_geom = astra_create_vol_geom(size(tomo,1),size(tomo,1),size(tomo,3));
         vol_geom = astra_create_vol_geom(size(tomo,1),size(tomo,1));
 
-        src_shift = det_spacing_x*0; % source shift
-        det_shift = 4.41*det_spacing_x; % detector shift
-        det_tilt = 0; % detector tilt (radians)
-        center_shift = 0; % shift of axis of rotation
+        src_shift = det_spacing_x*0;     % source shift
+        det_shift = 4.41*det_spacing_x;  % detector shift
+        det_tilt  = 0;                   % detector tilt (radians)
+        center_shift = 0;                % shift of axis of rotation
         tomo_sh = circshift(tomo,center_shift,1);
-        tomofl = flipud(tomo_sh); % flipping sinogram 
-        angles = linspace(0,2*pi,size(tomo_sh,2)+1); angles = angles(1:size(tomo_sh,2)); 
+        tomofl  = flipud(tomo_sh);        % flipping sinogram 
+        angles  = linspace(0,2*pi,size(tomo_sh,2)+1); 
+        angles  = angles(1:size(tomo_sh,2)); 
         vectors = fan_vec_custom(angles,source_origin,origin_det,det_spacing_x,src_shift,det_shift,det_tilt);
         
         proj_geom = astra_create_proj_geom('fanflat_vec', det_col_count, vectors);
         
-        attenrad = tomo_sh';
+        attenrad    = tomo_sh';
         sinogram_id = astra_mex_data2d('create', '-sino', proj_geom, attenrad);
 
         disp('Performing Reconstruction'), tic
@@ -115,7 +113,7 @@ for Ech = 1:E
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         proj_id = astra_create_projector('linear', proj_geom, vol_geom);
-        cfg.ProjectorId      = proj_id;
+        cfg.ProjectorId = proj_id;
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         alg_id = astra_mex_algorithm('create', cfg);
