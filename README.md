@@ -4,7 +4,7 @@ Denoising Iterative Hessian Sketching algorithm for Image reconstruction
 
 The Denoising-IHS Toolbox contains the Matlab implementation of a fast and convergent algorithm for Computed Tomography reconstruction and Spectral CT material decomposition.
 
-## Subdirectories (in alphabetical order):
+## Directories:
 
 * `Denoi-IHS` 
 
