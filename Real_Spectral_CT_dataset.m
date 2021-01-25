@@ -4,8 +4,8 @@
 %| Copyright 25-01-2021, Alessandro Perelli, Technical University of Denmark (DTU)
 
 %% ******************  Description  **********************
-%| This script upload the spectral CT data, post-process the data to 
-%| interpolate crystal edge drops and generate the ASTRA operator.
+%| This script upload the spectral CT data, post-process the data 
+%| to insert gaps and generate the ASTRA operator.
 %| As option, the SIRT reconstruction can be performed.
 %| option_recon = 1;
 
@@ -47,13 +47,12 @@ flat = mean(data_flat,2);
 for i=1:360
     data_n(:,i,:) = mean(data(:,(5+(i-1)*10+1):(5+(i)*10+1),:),2);
 end
-% Interpolate crystal edge drops
-% data_E = interpolate_crystaledges(data_E,2);
+
 for Ech = 1:E
     data_E = squeeze(data_n(:,:,Ech));
     flat_E = squeeze(flat(:,:,Ech));
     data_E = [flat_E data_E]';
-    %fill 4 pixels gap between 2 multix modules by neigbour interpolation
+    % fill 4 pixels gap between 2 multix modules by neigbour interpolation
     data_E = insert_gap(data_E,128*4,0,4);
     data_E = insert_gap(data_E,128*3,0,4);
     data_E = insert_gap(data_E,128*2,0,4);
@@ -69,9 +68,9 @@ for Ech = 1:E
     % tomo = permute(tomo,[1 3 2]); %reshaping to fit astra format
     % tomo(:,:,575:end)=[]; % cutting sample holder (might need to be reset)
 
+    %% Reconstruction is with fan beams geometry (translating line 1D-detector). 
+    %  For multi energy please loop it to fit the data size (or optimize it differently)
     if opt_recon == 1 
-        %% Reconstruction is with fan beams geometry (translating line 1D-detector). 
-        % For multi energy please loop it to fit the data size (or optimize it differently)
 
         %setting up astra geometry
         det_spacing_x = 0.08025; %pixel size x
@@ -97,14 +96,12 @@ for Ech = 1:E
         det_tilt = 0; % detector tilt (radians)
         center_shift = 0; % shift of axis of rotation
         tomo_sh = circshift(tomo,center_shift,1);
-        tomofl = flipud(tomo_sh); % flipping sinogram (sometimes necessary sometimes not, ask experimentalist or try both!)
+        tomofl = flipud(tomo_sh); % flipping sinogram 
         angles = linspace(0,2*pi,size(tomo_sh,2)+1); angles = angles(1:size(tomo_sh,2)); 
         vectors = fan_vec_custom(angles,source_origin,origin_det,det_spacing_x,src_shift,det_shift,det_tilt);
-        % vectors = cone_vec_custom(angles,source_origin,origin_det,det_spacing_x,det_spacing_y,0,0);
-
+        
         proj_geom = astra_create_proj_geom('fanflat_vec', det_col_count, vectors);
-        % proj_geom = astra_create_proj_geom('parallel', det_col_count, vectors, angles);
-
+        
         attenrad = tomo_sh';
         sinogram_id = astra_mex_data2d('create', '-sino', proj_geom, attenrad);
 
