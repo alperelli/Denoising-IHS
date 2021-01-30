@@ -1,0 +1,20 @@
+
+% Fan_vec_custom 
+function vectors = fan_vec_custom(angles,SAD,SDD,pix_width,src_shift,det_shift,det_tilt)
+
+vectors = zeros(numel(angles), 6);
+for i = 1:numel(angles)
+    
+    % source
+    vectors(i,1) = SAD*sin(angles(i)) + src_shift*sin(angles(i));
+    vectors(i,2) = -SAD*cos(angles(i)) + src_shift*cos(angles(i));
+    
+    % center of detector
+    vectors(i,3) = -SDD*sin(angles(i)) - det_shift*cos(angles(i));
+    vectors(i,4) = SDD*cos(angles(i)) - det_shift*sin(angles(i));
+    
+    % vector from detector pixel (0,0) to (0,1)
+    vectors(i,5) = cos(angles(i)+det_tilt) * pix_width;
+    vectors(i,6) = sin(angles(i)+det_tilt) * pix_width;
+    
+end
