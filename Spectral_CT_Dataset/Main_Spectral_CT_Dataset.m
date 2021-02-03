@@ -7,7 +7,7 @@
 %| Philosophical Transactions of the Royal Society A, (2021)
 %| DOI: 
 
-%% ********************  Description  ************************
+%% ********************  Description  *************************
 %| This script upload the spectral CT data, post-process the 
 %| data to intsert gaps and generate the ASTRA operator.
 %| As option, the SIRT reconstruction can be performed.
@@ -15,9 +15,9 @@
 
 %| This code requires the ASTRA Toolbox installed:
 %| https://github.com/astra-toolbox/astra-toolbox
-%% ***********************************************************
+%% ************************************************************
 
-%% *******************  Requirements  ************************
+%% *******************  Requirements  *************************
 %| the dataset can be downloaded at the following link:
 
 %| W. van Aarle, W. J. Palenstijn, J. Cant, E. Janssens, 
@@ -27,7 +27,7 @@
 %| Optics Express, 24(22), 25129-25147, (2016), 
 %| http://dx.doi.org/10.1364/OE.24.025129
 
-%% ***********************************************************
+%% ************************************************************
 %| Copyright 04-02-2021, Alessandro Perelli 
 %| Technical University of Denmark (DTU)
 
