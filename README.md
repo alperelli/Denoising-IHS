@@ -6,7 +6,7 @@ The Denoising-IHS Toolbox contains the Matlab implementation of a fast and conve
 
 ## Directories:
 
-* `Spectral Ct Dataset` 
+* `Spectral_CT_Dataset` 
 
 ## Relevant papers
 
