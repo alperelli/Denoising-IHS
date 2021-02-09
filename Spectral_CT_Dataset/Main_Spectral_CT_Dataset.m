@@ -1,5 +1,5 @@
 
-%% Denoising Iterative Hessian Sketching (Denoising-IHS)
+%% Photon-counting Spectral CT Data support for the article
 %|
 %| A. Perelli, M. S. Andersen, 
 %| "Regularization by Denoising Sub-sampled Newton Method for 
@@ -13,27 +13,30 @@
 %| As option, the SIRT reconstruction can be performed.
 %| option_recon = 1;
 
-%| This code requires the ASTRA Toolbox installed:
+%% ****************  Software Requirement  ********************
+%| For reconstruction, the code requires the ASTRA Toolbox:
 %| https://github.com/astra-toolbox/astra-toolbox
-%% ************************************************************
-
-%% *******************  Requirements  *************************
-%| the dataset can be downloaded at the following link:
-
+%|
 %| W. van Aarle, W. J. Palenstijn, J. Cant, E. Janssens, 
 %| F. Bleichrodt, A. Dabravolski, J. De Beenhouwer, 
 %| K. J. Batenburg, and J. Sijbers, 
 %| "Fast and Flexible X-ray Tomography Using the ASTRA Toolbox" 
-%| Optics Express, 24(22), 25129-25147, (2016), 
+%| Optics Express, 24(22), 25129-25147, (2016) 
 %| http://dx.doi.org/10.1364/OE.24.025129
 
 %% ************************************************************
-%| Copyright 04-02-2021, Alessandro Perelli 
+%| Copyright 08-02-2021, Alessandro Perelli 
 %| Technical University of Denmark (DTU)
 
 clc, clear, close all;
 
+% Option to perform SIRT or FBP reconstruction
 opt_recon = 0;
+
+if (opt_recon == 1)
+    % Add path for the ASTRA Toolbox
+    addpath(genpath('~/astra/matlab'));
+end
 
 % This script is assuming single energy 3D volumetric data. 
 a  = h5info('HER_acq19-02-13-16-00-40.h5');
@@ -50,7 +53,10 @@ for i = 1:E
     data(:,:,i)      = h5read('HER_acq19-02-13-16-01-00.h5',['/' a.Datasets(i).Name]);
 end
 
-flat = mean(data_flat,2);
+idx    = 360;
+flat   = mean(data_flat,2);
+data_n = zeros(nr, idx, E);
+
 for i = 1:360
     data_n(:,i,:) = mean(data(:,(5+(i-1)*10+1):(5+(i)*10+1),:),2);
 end
