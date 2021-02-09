@@ -12,7 +12,7 @@ The Denoising-IHS Toolbox contains the Matlab implementation of a fast and conve
 ## Relevant papers
 
 * Alessandro Perelli and Martin S. Andersen, 
-"Regularization by Denoising Sub-sampled Newton Method for Spectral CT Multi-Material Decomposition," 
+**"Regularization by Denoising Sub-sampled Newton Method for Spectral CT Multi-Material Decomposition"**, 
 *Royal Philosophical Transactions A*, 2021. 
 [arXiv](), [doi]()
 
