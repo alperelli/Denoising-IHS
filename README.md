@@ -29,7 +29,9 @@ matlab path and run vl_setupnn.
 ## Software dependencies for data generation script:
 * **Photon Attenuation**: https://uk.mathworks.com/matlabcentral/fileexchange/12092-photonattenuation
 * **Spektr**
-* **Spot operator package**
+* **Spot operator**: http://www.cs.ubc.ca/labs/scl/spot/
+* **TomoPhantom**:   https://github.com/dkazanc/TomoPhantom
+* **ToMoBAR**:       https://github.com/dkazanc/ToMoBAR
 
 
 ## Relevant papers
