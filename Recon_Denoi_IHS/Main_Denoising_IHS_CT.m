@@ -48,7 +48,7 @@ addpath(genpath('Denoisers'));
 
 %% Parameters
 % Image dimension
-d  = 64;
+d  = 256;
 dv = d^2;       % Vectorized dimensions
 
 %% Generate High and Low resolution image forward CT operators
@@ -65,14 +65,13 @@ proj_geom = astra_create_proj_geom('parallel', 1, Detectors, anglesDegrees*pi/18
 % projection 'line' model used
 proj_id   = astra_create_projector('line', proj_geom, vol_geom);
 
-% %% Generate Measurements (sinogram)
-% % Input high resolution image - Ground truth
-% I = 255*phantom(d);
+%% Generate Measurements (sinogram)
+%  Input high resolution image - Ground truth
 
 %% read the original image
 fprintf('Reading %s image...', filename);
 orig_im = imread(['./test_images/'  filename]);
-I = double(orig_im(1:4:end,1:4:end,1));
+I = double(orig_im);
 
 %% Generate projection data
 % Create operator for ASTRA using the GPU.
