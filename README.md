@@ -12,27 +12,24 @@ The Denoising-IHS Toolbox contains the Matlab implementation of a fast and conve
 ## General software prerequisites
 * **MATLAB**
 * **compilers and nvcc CUDA SDK compilers**
-* **ASTRA-toolbox**
 
-## Packages
-This repository uses several third-party Matlab denoising libraries. The latest versions of these packages can be found at:
-
-* **BM3D**:  http://www.cs.tut.fi/~foi/GCF-BM3D/
-
-* **NLM**:   http://www.mathworks.com/matlabcentral/fileexchange/27395-fast-non-local-means-1d--2d-color-and-3d
-
-* **DnCNN**: https://github.com/cszn/DnCNN
-
-DnCNN requires matconvnet (http://www.vlfeat.org/matconvnet/) to be installed, then add {matconvnet root folder}/matlab to the
-matlab path and run vl_setupnn.
-
-## Software dependencies for data generation script:
+## Software for generating simulated Spectral CT data:
+* **ASTRA-toolbox**:      https://github.com/astra-toolbox/astra-toolbox
 * **Photon Attenuation**: https://uk.mathworks.com/matlabcentral/fileexchange/12092-photonattenuation
-* **Spektr**
+* **Spektr**:        http://istar.jhu.edu/downloads/
 * **Spot operator**: http://www.cs.ubc.ca/labs/scl/spot/
 * **TomoPhantom**:   https://github.com/dkazanc/TomoPhantom
 * **ToMoBAR**:       https://github.com/dkazanc/ToMoBAR
 
+## Packages for denoising
+This repository uses several third-party Matlab denoising libraries. The latest versions of these packages can be found at:
+
+* **BM3D**:  http://www.cs.tut.fi/~foi/GCF-BM3D/
+* **NLM**:   http://www.mathworks.com/matlabcentral/fileexchange/27395-fast-non-local-means-1d--2d-color-and-3d
+* **DnCNN**: https://github.com/cszn/DnCNN
+
+DnCNN requires matconvnet (http://www.vlfeat.org/matconvnet/) to be installed, then add {matconvnet root folder}/matlab to the
+matlab path and run vl_setupnn.
 
 ## Relevant papers
 
