@@ -9,6 +9,19 @@ The Denoising-IHS Toolbox contains the Matlab implementation of a fast and conve
 * **Fig_Block_Leverage_Scores**: this folder contains the function to generate the leverage scores and together with the plot and the data for the Astra explicit matric CT forward operator;
 * **Spectral_CT_Dataset**: this folder contains the functions to access the spectral CT dataset available at the repository [Zenodo](https://doi.org/10.5281/zenodo.4482071); 
 
+## Packages
+This repository uses several third-party Matlab denoising libraries. The latest versions of these packages can be found at:
+
+BM3D:  http://www.cs.tut.fi/~foi/GCF-BM3D/
+
+NLM:   http://www.mathworks.com/matlabcentral/fileexchange/27395-fast-non-local-means-1d--2d-color-and-3d
+
+DnCNN: https://github.com/cszn/DnCNN
+
+DnCNN requires matconvnet (http://www.vlfeat.org/matconvnet/) to be installed, then add {matconvnet root folder}/matlab to the
+matlab path and run vl_setupnn.
+
+
 ## Relevant papers
 
 * Alessandro Perelli and Martin S. Andersen, 
