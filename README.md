@@ -11,7 +11,7 @@ The Denoising-IHS Toolbox contains the Matlab implementation of a fast and conve
 
 ## General software prerequisites
 * **MATLAB**
-* **compilers and nvcc CUDA SDK compilers**
+* **NVCC CUDA compiler**
 
 ## Software for generating simulated Spectral CT data:
 * **ASTRA-toolbox**:      https://github.com/astra-toolbox/astra-toolbox
@@ -39,4 +39,3 @@ matlab path and run vl_setupnn.
 [arXiv](), [doi]()
 
 These works were supported in part by the European Union's Horizon 2020 research and innovation programme under the Marie Sklodowska-Curie grant agreement no. 713683 (COFUNDfellowsDTU).
-
