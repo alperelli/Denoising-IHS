@@ -7,6 +7,8 @@ The Denoising-IHS Toolbox contains the Matlab implementation of a fast and conve
 ## Directories:
 
 * **Fig_Block_Leverage_Scores**: this folder contains the function to generate the leverage scores and together with the plot and the data for the Astra explicit matric CT forward operator;
+* **Numerical_Dataset**: this folder contains the phantom images used for the numerical simulations;
+* **Recon_Denoi_IHS**: this folder contains the main Matlab functions of the Denoising-IHS algorithm;
 * **Spectral_CT_Dataset**: this folder contains the functions to access the spectral CT dataset available at the repository [Zenodo](https://doi.org/10.5281/zenodo.4482071); 
 
 ## General software prerequisites
